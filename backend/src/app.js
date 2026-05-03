@@ -5,23 +5,8 @@ const photoModel = require("./model/model.post")
 const app = express()
 const cors = require("cors")
 
-const allowedOrigins = [
-    "http://localhost:5173",
-    "http://localhost:3000",
-    "https://sahilkhanst816-max.github.io",
-]
-
-app.use(cors({
-    origin: function (origin, callback) {
-        if (!origin || allowedOrigins.includes(origin) || origin.endsWith(".vercel.app")) {
-            return callback(null, true)
-        }
-
-        return callback(new Error("Not allowed by CORS"))
-    },
-    methods: ["GET", "POST", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-}))
+app.use(cors())
+app.options(/.*/, cors())
 
 app.use(express.json())
 const uplode = multer({ storage: multer.memoryStorage() })
