@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
         message: "booking backend is running"
     })
 });
-app.post("/notes", uplode.single('image'), async (req, res) => {
+app.post("/notes", uplode.single('finalImageUrl'), async (req, res) => {
     try {
         let finalImageUrl = ""; 
         
