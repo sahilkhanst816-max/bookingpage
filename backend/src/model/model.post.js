@@ -1,7 +1,6 @@
 const mongoDB = require("mongoose")
 
 const mongoDBSchema = new mongoDB.Schema({
-    image: String,
     name: String,
     email: String,
     roomType: String,
