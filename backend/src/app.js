@@ -27,7 +27,7 @@ app.post("/notes", uplode.single('image'), async (req, res) => {
 
         const result = await uploadFile(req.file.buffer)
         const post = await photoModel.create({
-            image: result.url,
+          
             name: req.body.name,
             email: req.body.email,
             roomType: req.body.roomType,
