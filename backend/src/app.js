@@ -30,7 +30,7 @@ app.post("/notes", uplode.single('image'), async (req, res) => {
             roomType: req.body.roomType,
             suggestions: req.body.suggestions,
             adults: req.body.adults,
-            image: imageUrl, // Yahan imageUrl pass kar dena
+            image: image,
             children: req.body.children,
             phone: req.body.phone,
         });

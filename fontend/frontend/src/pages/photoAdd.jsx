@@ -78,7 +78,7 @@ const photoAdd = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
           <div className="flex flex-col gap-2">
             <label className="text-sm font-medium text-white/80">ID / Image File</label>
-            <input type="file" name="image" accept="image/*" 
+            <input type="file" name="image"  accept="image/*" 
               className="file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-white/20 file:text-white hover:file:bg-white/30 cursor-pointer text-sm outline-none border border-white/10 rounded-xl bg-white/5 p-1" />
           </div>
           <div className="flex flex-col gap-2">
