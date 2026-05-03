@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: bookingpage-backend
+    env: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: MONGODB_URL
+        sync: false
+      - key: IMAGEKIT_PRIVATE_KEY
+        sync: false
+

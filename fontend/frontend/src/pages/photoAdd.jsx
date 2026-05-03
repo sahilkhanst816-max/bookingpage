@@ -1,17 +1,22 @@
 import React from 'react'
-import { api } from '../api'
+import { api, apiSetupMessage, isApiConfigured } from '../api'
 
 const photoAdd = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!isApiConfigured) {
+      alert(apiSetupMessage)
+      return
+    }
     const formData = new FormData(e.target)
-    api.post('/notes', formData).then((res) => {
-     /*  console.log(res.data) */
+    api.post('/notes', formData).then(() => {
+      alert('Booking saved successfully')
+      e.target.reset()
     }).catch((err) => {
       console.log(err)
+      alert('Booking save nahi hui. Backend URL/check karo.')
     })
-    e.target.reset()
   }
   return (<div className="flex justify-center items-center min-h-screen bg-yellow-400 p-4 font-sans">
     <form
