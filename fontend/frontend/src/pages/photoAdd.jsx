@@ -1,12 +1,12 @@
-import axios from 'axios'
 import React from 'react'
+import { api } from '../api'
 
 const photoAdd = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target)
-    axios.post('http://localhost:3000/notes', formData).then((res) => {
+    api.post('/notes', formData).then((res) => {
      /*  console.log(res.data) */
     }).catch((err) => {
       console.log(err)
