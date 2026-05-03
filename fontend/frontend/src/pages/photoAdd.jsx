@@ -1,16 +1,13 @@
 import React from 'react'
-import { api, apiSetupMessage, isApiConfigured } from '../api'
+import { api } from '../api'
 
 const photoAdd = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!isApiConfigured) {
-      alert(apiSetupMessage)
-      return
-    }
     const formData = new FormData(e.target)
-    api.post('/notes', formData).then(() => {
+    api.post('/notes', formData).then((res) => {
+      console.log(res.data)
       alert('Booking saved successfully')
       e.target.reset()
     }).catch((err) => {
