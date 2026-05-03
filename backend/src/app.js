@@ -44,6 +44,7 @@ app.post("/notes", uplode.single('image'), async (req, res) => {
             post: post
         });
     } catch (error) {
+         console.log(finalImageUrl)
         console.log("Upload Error:", error); // Terminal me error dekhne ke liye
         return res.status(500).json({
             message: "upload failed",
