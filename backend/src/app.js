@@ -16,18 +16,16 @@ app.get("/", (req, res) => {
         message: "booking backend is running"
     })
 })
-
 app.post("/notes", uplode.single('image'), async (req, res) => {
     try {
-        if (!req.file) {
-            return res.status(400).json({
-                message: "image file is required"
-            })
+        let imageUrl = null; // Default null rakh lo
+        
+        // Agar image aayi hai, tabhi upload karo
+        if (req.file) {
+            imageUrl = await uploadFile(req.file.buffer);
         }
 
-        const result = await uploadFile(req.file.buffer)
         const post = await photoModel.create({
-          
             name: req.body.name,
             email: req.body.email,
             roomType: req.body.roomType,
@@ -35,20 +33,20 @@ app.post("/notes", uplode.single('image'), async (req, res) => {
             adults: req.body.adults,
             children: req.body.children,
             phone: req.body.phone,
-
+            // Agar database me image save karne ka option hai toh yahan imageUrl pass kar dena
         });
+
         return res.status(201).json({
-            message: "photo upload successfully",
+            message: "booking upload successfully",
             post: post
-        })
+        });
     } catch (error) {
         return res.status(500).json({
-            message: "photo upload failed",
+            message: "upload failed",
             error: error.message
-        })
+        });
     }
 })
-
 app.get("/notes", async (req, res) => {
     try {
         const data = await photoModel.find()
