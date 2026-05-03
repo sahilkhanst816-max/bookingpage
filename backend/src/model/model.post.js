@@ -1,7 +1,7 @@
 const mongoDB = require("mongoose")
 
 const mongoDBSchema = new mongoDB.Schema({
-   
+    image: String,
     name: String,
     email: String,
     roomType: String,
@@ -10,7 +10,7 @@ const mongoDBSchema = new mongoDB.Schema({
     children: Number,
     phone: Number,
 
-    
+
 })
 
 const mongoDBmodel = mongoDB.model("post", mongoDBSchema)

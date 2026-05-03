@@ -18,9 +18,8 @@ app.get("/", (req, res) => {
 })
 app.post("/notes", uplode.single('image'), async (req, res) => {
     try {
-        let imageUrl = null; // Default null rakh lo
+        let imageUrl = null; 
         
-        // Agar image aayi hai, tabhi upload karo
         if (req.file) {
             imageUrl = await uploadFile(req.file.buffer);
         }
@@ -31,9 +30,9 @@ app.post("/notes", uplode.single('image'), async (req, res) => {
             roomType: req.body.roomType,
             suggestions: req.body.suggestions,
             adults: req.body.adults,
+            image: imageUrl, // Yahan imageUrl pass kar dena
             children: req.body.children,
             phone: req.body.phone,
-            // Agar database me image save karne ka option hai toh yahan imageUrl pass kar dena
         });
 
         return res.status(201).json({
