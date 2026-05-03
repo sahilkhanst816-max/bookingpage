@@ -76,11 +76,7 @@ const photoAdd = () => {
 
       {/* File & Caption (Previous Request) */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-        <div className="flex flex-col gap-2">
-          <label className="font-bold text-black">ID / Image File</label>
-          <input type="file" name="image" accept="image/*" required
-            className="file:mr-4 file:py-2 file:px-4 file:border-2 file:border-black file:font-bold file:bg-blue-300 file:text-black hover:file:bg-blue-400 cursor-pointer border-2 border-black p-1.5 bg-gray-50 outline-none w-full" />
-        </div>
+        
         <div className="flex flex-col gap-2">
           <label className="font-bold text-black">Image Caption</label>
           <input type="text" name="caption" placeholder="Caption for image..."
