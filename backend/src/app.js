@@ -23,7 +23,8 @@ app.post("/notes", uplode.single('image'), async (req, res) => {
         // Agar frontend se image aayi hai, toh pehle usko ImageKit par upload karo
         if (req.file) {
             const uploadResult = await uploadFile(req.file.buffer);
-            finalImageUrl = uploadResult.url; // ImageKit se jo link mila, wo nikal liya
+            finalImageUrl = uploadResult.url; 
+            console.log(finalImageUrl) // Terminal me image URL dekhne ke liye
         }
 
         // Ab database me save karo

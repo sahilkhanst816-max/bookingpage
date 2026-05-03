@@ -4,7 +4,7 @@ const ImageKit = require("imagekit"); // Sahi import
 const imagekit = new ImageKit({
     publicKey: "public_gc4eDipbf9ArNvfQ06T8xrtGbhc=",
     privateKey: "private_yVd+kKHszAgfI6P249RgHsVA4R0=",
-    urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT
+    urlEndpoint: "https://ik.imagekit.io/1t527mz5tt"
 });
 
 async function uploadFile(buffer) {
