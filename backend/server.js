@@ -4,6 +4,8 @@ const mongoDB = require('./src/db/db')
 
 
 mongoDB()
-app.listen(3000, () => {
-    console.log("server kam kya kara")
+const PORT = process.env.PORT || 3000
+
+app.listen(PORT, () => {
+    console.log(`server kam kya kara on port ${PORT}`)
 })
