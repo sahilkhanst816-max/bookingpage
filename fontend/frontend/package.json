@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@imagekit/next": "^2.1.5",
     "@tailwindcss/vite": "^4.2.4",
     "axios": "^1.15.2",
     "react": "^19.2.0",
