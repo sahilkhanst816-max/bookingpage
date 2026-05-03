@@ -1,16 +1,23 @@
-const { ImageKit } = require("@imagekit/nodejs/index.js")
+const ImageKit = require("imagekit"); // Sahi import
 
+// Vercel me ye teeno chizein env me add karni padengi
 const imagekit = new ImageKit({
-    privateKey: "private_gLxSk8f0VDEH01uCZkhAZJ2Znbs=",
+    publicKey: "public_gc4eDipbf9ArNvfQ06T8xrtGbhc=",
+    privateKey: "private_yVd+kKHszAgfI6P249RgHsVA4R0=",
+    urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT
 });
 
 async function uploadFile(buffer) {
-
-    const result = await imagekit.files.upload({
-        file: buffer.toString("base64"),
-        fileName: 'image-jpg',
-    });
-    return result
+    try {
+        const result = await imagekit.upload({ // .files.upload nahi, sirf .upload hota hai
+            file: buffer.toString("base64"),
+            fileName: 'booking-image.jpg',
+        });
+        return result;
+    } catch (error) {
+        console.log("ImageKit Error: ", error);
+        throw new Error("ImageKit upload failed");
+    }
 }
 
-module.exports = uploadFile
+module.exports = uploadFile;

@@ -15,24 +15,27 @@ app.get("/", (req, res) => {
     res.status(200).json({
         message: "booking backend is running"
     })
-})
+});
 app.post("/notes", uplode.single('image'), async (req, res) => {
     try {
-        let imageUrl = null; 
+        let finalImageUrl = ""; 
         
+        // Agar frontend se image aayi hai, toh pehle usko ImageKit par upload karo
         if (req.file) {
-            imageUrl = await uploadFile(req.file.buffer);
+            const uploadResult = await uploadFile(req.file.buffer);
+            finalImageUrl = uploadResult.url; // ImageKit se jo link mila, wo nikal liya
         }
 
+        // Ab database me save karo
         const post = await photoModel.create({
             name: req.body.name,
             email: req.body.email,
             roomType: req.body.roomType,
             suggestions: req.body.suggestions,
             adults: req.body.adults,
-            image: image,
             children: req.body.children,
             phone: req.body.phone,
+            image: finalImageUrl, // <--- YAHAN GALTI THI, Ise theek kar diya hai
         });
 
         return res.status(201).json({
@@ -40,6 +43,7 @@ app.post("/notes", uplode.single('image'), async (req, res) => {
             post: post
         });
     } catch (error) {
+        console.log("Upload Error:", error); // Terminal me error dekhne ke liye
         return res.status(500).json({
             message: "upload failed",
             error: error.message
