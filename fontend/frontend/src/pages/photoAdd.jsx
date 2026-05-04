@@ -2,7 +2,6 @@ import React from 'react'
 import { api } from '../api'
 
 const photoAdd = () => {
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target)
